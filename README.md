@@ -65,7 +65,9 @@ Result:
 
     ## Subtitle
 
-        func yTown() -> String { "Berlin" }
+    ```swift
+    func yTown() -> String { "Berlin" }
+    ```
 
     Sed quis sapien nec augue bibendum congue vitae et metus.
 
