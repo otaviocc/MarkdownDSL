@@ -21,6 +21,13 @@ public struct StringBuilder {
         components
             .joined(separator: " ")
     }
+
+    public static func buildArray(
+        _ components: [String]
+    ) -> String {
+        components
+            .joined(separator: " ")
+    }
 }
 
 @resultBuilder
@@ -48,5 +55,11 @@ public struct DocumentBuilder {
         second: MarkdownElement
     ) -> MarkdownElement {
         second
+    }
+
+    public static func buildArray(
+        _ components: [MarkdownElement]
+    ) -> MarkdownElement {
+        .elements(components)
     }
 }

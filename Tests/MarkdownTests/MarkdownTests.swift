@@ -143,4 +143,47 @@ final class MarkdownTests: XCTestCase {
             """#
         )
     }
+
+    func testExampleForLoopParagraph() {
+        let markdown = document {
+            for value in (0..<5) {
+                paragraph {
+                    "Paragraph \(value): Sed quis sapien nec augue bibendum congue vitae et metus."
+                }
+            }
+        }
+
+        XCTAssertEqual(
+            markdown,
+            #"""
+            Paragraph 0: Sed quis sapien nec augue bibendum congue vitae et metus.
+
+            Paragraph 1: Sed quis sapien nec augue bibendum congue vitae et metus.
+
+            Paragraph 2: Sed quis sapien nec augue bibendum congue vitae et metus.
+
+            Paragraph 3: Sed quis sapien nec augue bibendum congue vitae et metus.
+
+            Paragraph 4: Sed quis sapien nec augue bibendum congue vitae et metus.
+            """#
+        )
+    }
+
+    func testExampleForLoopText() {
+        let markdown = document {
+            paragraph {
+                for value in (0..<5) {
+                    "\(value)..."
+                }
+            }
+        }
+
+        XCTAssertEqual(
+            markdown,
+            #"""
+            0... 1... 2... 3... 4...
+            """#
+        )
+    }
+
 }
