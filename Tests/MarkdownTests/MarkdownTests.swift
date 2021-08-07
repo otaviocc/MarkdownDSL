@@ -88,4 +88,59 @@ final class MarkdownTests: XCTestCase {
             """#
         )
     }
+
+    func testExampleWithConditionalOptional() {
+        let markdown = document {
+            if true {
+                paragraph {
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                }
+            }
+        }
+
+        XCTAssertEqual(
+            markdown,
+            #"""
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            """#
+        )
+    }
+
+    func testExampleWithConditionalTrue() {
+        let markdown = document {
+            if true {
+                paragraph {
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                }
+            } else {
+                // ...
+            }
+        }
+
+        XCTAssertEqual(
+            markdown,
+            #"""
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            """#
+        )
+    }
+
+    func testExampleWithConditionalFalse() {
+        let markdown = document {
+            if false {
+                // ...
+            } else {
+                paragraph {
+                    "Sed quis sapien nec augue bibendum congue vitae et metus."
+                }
+            }
+        }
+
+        XCTAssertEqual(
+            markdown,
+            #"""
+            Sed quis sapien nec augue bibendum congue vitae et metus.
+            """#
+        )
+    }
 }

@@ -31,4 +31,22 @@ public struct DocumentBuilder {
     ) -> MarkdownElement {
         .elements(components)
     }
+
+    public static func buildOptional(
+        _ component: MarkdownElement?
+    ) -> MarkdownElement {
+        component ?? .paragraph(text: "")
+    }
+
+    public static func buildEither(
+        first: MarkdownElement
+    ) -> MarkdownElement {
+        first
+    }
+
+    public static func buildEither(
+        second: MarkdownElement
+    ) -> MarkdownElement {
+        second
+    }
 }
