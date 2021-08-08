@@ -2,9 +2,39 @@
 
 This Swift Package implements a Markdown DSL in Swift, using [Result Builders](https://github.com/apple/swift-evolution/blob/main/proposals/0289-result-builders.md) and [Callable Types](https://github.com/apple/swift-evolution/blob/main/proposals/0253-callable.md).
 
+```swift
+let markdown = document {
+    section("Section") {
+        paragraph {
+            "This is a sentence."
+            "And this is another sentence."
+        }
+    }
+
+    section("Another Section") {
+        section("Subsection") {
+            quote {
+                "This is a quote in italic."
+                    .textStyle(.italic)
+            }
+
+            paragraph {
+                "While the example below is a code block:"
+            }
+
+            code("swift") {
+                #"""
+                print("hello world!")
+                """#
+            }
+        }
+    }
+}
+```
+
 ## Sections
 
-Sections are one of the most important features in a Markdown file. When writing a Markdown file it's quite easy to misuse `#`, `##`, etc... without thinking of the document hierarchy. This DSL simplifies it by removing from the syntax the section level. Sections are automatically set based on the level they are in the document. Nesting sections create subsection.
+Sections are one of the most important features in a Markdown file. When writing a Markdown file it's quite easy to misuse `#`, `##`, etc... without thinking of the document hierarchy. This DSL simplifies it by removing from the syntax the section level. Sections are automatically set based on the level they are in the document. Nesting sections creates subsections.
 
 The example below
 
